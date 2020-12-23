@@ -1,5 +1,5 @@
 import Movie from '../model/MoviesSchema.js'
-import ErrorResponse from '../utils/ErrorResponse.js'
+
 import asyncHandler from '../middleware/async.js'
 
 
@@ -33,9 +33,7 @@ const getMovies = asyncHandler(async (req, res, next) => {
 const getMovieById = asyncHandler(async (req, res) => {
     const movie = await Movie.findById(req.params.id)
 
-    if (!movie) {
-        next(new ErrorResponse(`Movie not found with id of ${req.params.id}`, 404))
-    }
+    
     
     res.status(200).json({
             success: true,
