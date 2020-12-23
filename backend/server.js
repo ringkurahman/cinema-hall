@@ -1,3 +1,4 @@
+const path = require ('path')
 const express = require('express')
 const movies = require('./routes/moviesRoutes')
 const dotenv = require('dotenv')
@@ -6,6 +7,7 @@ const morgan = require('morgan')
 const errorHandler = require('./middleware/error')
 const colors = require('colors')
 const connectDB = require('./config/db')
+
 
 // Connect dotenv
 dotenv.config()
@@ -25,6 +27,19 @@ if (process.env.NODE_ENV === 'development') {
 
 // Mount router
 app.use('/api/movies', movies)
+
+
+// Create static build folder and access index.html file
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html')))
+
+} else {
+    app.get('/', (req, res) => {
+        res.send('API is running...')
+    })
+}
 
 // Error Handler
 app.use(errorHandler)
