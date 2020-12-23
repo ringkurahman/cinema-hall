@@ -1,9 +1,9 @@
-const express = require('express')
-const { createMovie, getMovies, getMovieById } = require('../controllers/movies')
+import express from 'express'
 const router = express.Router()
+import { createMovie, getMovies, getMovieById } from '../controllers/movies.js'
 
 
 router.route('/').get(getMovies).post(createMovie)
 router.route('/:id').get(getMovieById)
 
-module.exports = router
+export default router

@@ -1,12 +1,12 @@
-const Movie = require('../model/MoviesSchema')
-const ErrorResponse = require('../utils/errorResponse')
-const asyncHandler = require('../middleware/async')
+import Movie from '../model/MoviesSchema.js'
+import ErrorResponse from '../utils/ErrorResponse.js'
+import asyncHandler from '../middleware/async.js'
 
 
 // @desc        Create new movie
 // @route       POST /api/movies
 // @access      Public
-exports.createMovie = asyncHandler(async (req, res, next) => {
+const createMovie = asyncHandler(async (req, res, next) => {
         const movie = await Movie.create(req.body)
 
         res.status(201).json({
@@ -18,7 +18,7 @@ exports.createMovie = asyncHandler(async (req, res, next) => {
 // @desc        Get all movies
 // @route       GET /api/movies
 // @access      Public
-exports.getMovies = asyncHandler(async (req, res, next) => {
+const getMovies = asyncHandler(async (req, res, next) => {
         const movies = await Movie.find()
 
         res.status(200).json({
@@ -30,7 +30,7 @@ exports.getMovies = asyncHandler(async (req, res, next) => {
 // @desc    Fetch single movie
 // @route   GET /api/movies/:id
 // @access  Public
-exports.getMovieById = asyncHandler(async (req, res) => {
+const getMovieById = asyncHandler(async (req, res) => {
     const movie = await Movie.findById(req.params.id)
 
     if (!movie) {
@@ -42,3 +42,5 @@ exports.getMovieById = asyncHandler(async (req, res) => {
             data: movie
         })
 })
+
+export { createMovie, getMovies, getMovieById }

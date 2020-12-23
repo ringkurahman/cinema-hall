@@ -1,12 +1,11 @@
-const path = require ('path')
-const express = require('express')
-const movies = require('./routes/moviesRoutes')
-const dotenv = require('dotenv')
-dotenv.config({ path: '../.env' })
-const morgan = require('morgan')
-const errorHandler = require('./middleware/error')
-const colors = require('colors')
-const connectDB = require('./config/db')
+import path from 'path'
+import express from 'express'
+import movies from './routes/moviesRoutes.js'
+import dotenv from 'dotenv'
+import colors from 'colors'
+import morgan from 'morgan'
+import connectDB from './config/db.js'
+import errorHandler from './middleware/error.js'
 
 
 // Connect dotenv
@@ -21,7 +20,7 @@ const app = express()
 app.use(express.json())
 
 // Middleware
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
     app.use(morgan('dev'))
 }
 
@@ -29,6 +28,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/movies', movies)
 
 
+const __dirname = path.resolve()
 // Create static build folder and access index.html file
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '/frontend/build')))
