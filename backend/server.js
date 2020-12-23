@@ -20,7 +20,7 @@ const app = express()
 app.use(express.json())
 
 // Middleware
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
     app.use(morgan('dev'))
 }
 
