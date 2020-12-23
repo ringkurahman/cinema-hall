@@ -1,0 +1,81 @@
+main {
+  min-height: 80vh;
+}
+h3 {
+  padding: 1rem 0;
+}
+h1{
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+h2{
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a:focus,
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+}
+
+/* Form css start */
+.form-field {
+  margin: 50px;
+  border: 2px solid #c4c2c2;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px 10px 20px 10px;
+}
+form p {
+  margin: 10px;
+}
+input[type='text'],
+[type='email'],
+[type='password'] {
+  width: 320px;
+  outline: none;
+  padding: 6px 8px;
+  border-radius: 3px;
+  border: 1px solid #ededed;
+}
+input,
+select,
+textarea {
+  background-color: none !important;
+}
+input[type='submit'] {
+  width: 320px;
+  padding: 6px 16px;
+  border-radius: 3px;
+  border: none;
+  border-bottom: 3px solid white;
+  font-size: bold;
+  background-color: #275A53;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+.sign-btn {
+  background-color: transparent;
+  width: 320px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid gray;
+  outline: none;
+}
+.divider {
+  border: 1px solid gray;
+  width: 150px;
+}
+.login-qstn{
+    font-size: 12px;
+}
+/* Form css end */
